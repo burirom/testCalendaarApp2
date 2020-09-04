@@ -18,6 +18,9 @@
         <div v-else-if="firstList.personInCharge" class="second-item first-row">
           {{ firstList.personInCharge }}
         </div>
+        <div v-else class="second-item first-row">
+          {{ firstList }}
+        </div>
         <div class="d-flex icon-box second-item second-row">
           <div
             v-for="(secondList, secondListIndex) in secondActiveList(
@@ -27,7 +30,15 @@
             class="border-right second-col-Width"
             :style="secondColWidth"
           >
-            {{ secondList.personInCharge.substring(0, 1) }}
+            <div v-if="secondList.unitName">
+              {{ secondList.unitName.substring(0, 1) }}
+            </div>
+            <div v-else-if="secondList.personInCharge">
+              {{ secondList.personInCharge.substring(0, 1) }}
+            </div>
+            <div v-else>
+              {{ secondList }}
+            </div>
           </div>
           <v-icon class="icon-btn" @click="setActiveNumber(firstIndex)">
             mdi-chevron-right

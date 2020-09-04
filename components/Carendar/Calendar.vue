@@ -15,6 +15,15 @@
       :width="100"
       @sendRaiosData="setRaiosData"
     />
+    <CalendarWeekContent
+      v-if="activeCarendarList === 1"
+      :date-item="dateItem"
+      :radios="raiosData === 'unit' ? true : false"
+      :api-data="damyData"
+      :customer-lists="damyData.customerLists"
+      :width="100"
+      @sendRaiosData="setRaiosData"
+    />
   </v-card>
 </template>
 
